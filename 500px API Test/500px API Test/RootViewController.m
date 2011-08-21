@@ -49,14 +49,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-    		
 }
 
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
-    		
+    return kNumRootRows;
 }
 
 		
@@ -69,7 +67,28 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    // Configure the cell.
+    switch (indexPath.row) {
+        case kPopularRow:
+            cell.textLabel.text = @"Popular";
+            break;
+        case kUpcomingRow:
+            cell.textLabel.text = @"Upcoming";
+            break;
+        case kEditorsRow:
+            cell.textLabel.text = @"Editors' Choice";
+            break;
+        case kFreshTodayRow:
+            cell.textLabel.text = @"Fresh Today";
+            break;
+        case kFreshYesterdayRow:
+            cell.textLabel.text = @"Fresh Yesterday";
+            break;
+        case kFreshThisWeekRow:
+            cell.textLabel.text = @"Fresh This Week";
+            break;
+        default:
+            cell.textLabel.text = @"";
+    }
     		
     return cell;
 }
@@ -107,6 +126,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.detailViewController.detailDescriptionLabel setText:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     // Navigation logic may go here -- for example, create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

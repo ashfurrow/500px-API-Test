@@ -10,7 +10,21 @@
 
 @class DetailViewController;
 
+enum
+{
+    kPopularRow = 0,
+    kUpcomingRow,
+    kEditorsRow,
+    kFreshTodayRow,
+    kFreshYesterdayRow,
+    kFreshThisWeekRow,
+    kNumRootRows
+};
+
 @interface RootViewController : UITableViewController
+{
+    NSArray *photos;
+}
 
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 
