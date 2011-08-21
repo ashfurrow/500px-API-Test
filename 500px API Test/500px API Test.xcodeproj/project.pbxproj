@@ -97,7 +97,6 @@
 				5E4F133A1401AA98008E7B71 /* Supporting Files */,
 				5E4F13561401AC53008E7B71 /* APIHelper.h */,
 				5E4F13571401AC53008E7B71 /* APIHelper.m */,
-				5E4F13591401AC63008E7B71 /* APIConstants.h */,
 			);
 			path = "500px API Test";
 			sourceTree = "<group>";
@@ -106,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				5E4F133B1401AA98008E7B71 /* 500px API Test-Info.plist */,
+				5E4F13591401AC63008E7B71 /* APIConstants.h */,
 				5E4F133C1401AA98008E7B71 /* InfoPlist.strings */,
 				5E4F133F1401AA98008E7B71 /* main.m */,
 				5E4F13411401AA98008E7B71 /* 500px API Test-Prefix.pch */,

@@ -9,6 +9,7 @@
 #import "_00px_API_TestAppDelegate.h"
 
 #import "RootViewController.h"
+#import "APIHelper.h"
 
 @implementation _00px_API_TestAppDelegate
 
@@ -23,6 +24,9 @@
     // Add the split view controller's view to the window and display.
     self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
+    
+    NSLog(@"Fetching: %@", [APIHelper fetchSomeData]);
+    
     return YES;
 }
 
