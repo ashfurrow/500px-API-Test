@@ -127,7 +127,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.detailViewController.detailDescriptionLabel setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
-    [self.detailViewController configureView];
+    [self.detailViewController configureViewForSelectedRootRow:indexPath.row];
 }
 
 - (void)didReceiveMemoryWarning

@@ -15,6 +15,6 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *detailDescriptionLabel;
 @property (nonatomic, retain) NSArray *photos;
 
-- (void)configureView;
+- (void)configureViewForSelectedRootRow:(int)selectedRow;
 
 @end
