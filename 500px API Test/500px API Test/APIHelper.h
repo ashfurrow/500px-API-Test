@@ -12,4 +12,6 @@
 
 @interface APIHelper : NSObject
 
++ (NSArray *)fetchSomeData;
+
 @end
