@@ -17,6 +17,7 @@
 		5E4F134A1401AA99008E7B71 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13491401AA99008E7B71 /* DetailViewController.m */; };
 		5E4F134D1401AA99008E7B71 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E4F134B1401AA99008E7B71 /* DetailView.xib */; };
 		5E4F13501401AA99008E7B71 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F134F1401AA99008E7B71 /* RootViewController.m */; };
+		5E4F13581401AC53008E7B71 /* APIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13571401AC53008E7B71 /* APIHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,9 @@
 		5E4F134C1401AA99008E7B71 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
 		5E4F134E1401AA99008E7B71 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		5E4F134F1401AA99008E7B71 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		5E4F13561401AC53008E7B71 /* APIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIHelper.h; sourceTree = "<group>"; };
+		5E4F13571401AC53008E7B71 /* APIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIHelper.m; sourceTree = "<group>"; };
+		5E4F13591401AC63008E7B71 /* APIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,9 @@
 				5E4F134E1401AA99008E7B71 /* RootViewController.h */,
 				5E4F134F1401AA99008E7B71 /* RootViewController.m */,
 				5E4F133A1401AA98008E7B71 /* Supporting Files */,
+				5E4F13561401AC53008E7B71 /* APIHelper.h */,
+				5E4F13571401AC53008E7B71 /* APIHelper.m */,
+				5E4F13591401AC63008E7B71 /* APIConstants.h */,
 			);
 			path = "500px API Test";
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 				5E4F13441401AA98008E7B71 /* _00px_API_TestAppDelegate.m in Sources */,
 				5E4F134A1401AA99008E7B71 /* DetailViewController.m in Sources */,
 				5E4F13501401AA99008E7B71 /* RootViewController.m in Sources */,
+				5E4F13581401AC53008E7B71 /* APIHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
