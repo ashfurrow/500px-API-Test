@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-
+typedef void (^CallbackBlock)(NSArray *fetchedArray);
+typedef void (^ErrorBlock)(NSError *error);
 
 @interface APIHelper : NSObject
 
-+ (NSArray *)fetchSomeData;
++ (void) fetchPopularPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorblock;
 
 @end
