@@ -29,6 +29,9 @@
 		5E4F137B1401B217008E7B71 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F136E1401B217008E7B71 /* SBJsonTokeniser.m */; };
 		5E4F137C1401B217008E7B71 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13701401B217008E7B71 /* SBJsonUTF8Stream.m */; };
 		5E4F137D1401B217008E7B71 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13721401B217008E7B71 /* SBJsonWriter.m */; };
+		5E4F13811401BEEC008E7B71 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E4F137E1401BEEC008E7B71 /* SVProgressHUD.bundle */; };
+		5E4F13821401BEEC008E7B71 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13801401BEEC008E7B71 /* SVProgressHUD.m */; };
+		5E4F13891401BFE4008E7B71 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4F13881401BFE4008E7B71 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,10 @@
 		5E4F13701401B217008E7B71 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		5E4F13711401B217008E7B71 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		5E4F13721401B217008E7B71 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		5E4F137E1401BEEC008E7B71 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		5E4F137F1401BEEC008E7B71 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		5E4F13801401BEEC008E7B71 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		5E4F13881401BFE4008E7B71 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4F13891401BFE4008E7B71 /* QuartzCore.framework in Frameworks */,
 				5E4F13341401AA98008E7B71 /* UIKit.framework in Frameworks */,
 				5E4F13361401AA98008E7B71 /* Foundation.framework in Frameworks */,
 				5E4F13381401AA98008E7B71 /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +101,7 @@
 		5E4F13241401AA98008E7B71 = {
 			isa = PBXGroup;
 			children = (
+				5E4F13881401BFE4008E7B71 /* QuartzCore.framework */,
 				5E4F13391401AA98008E7B71 /* 500px API Test */,
 				5E4F13321401AA98008E7B71 /* Frameworks */,
 				5E4F13301401AA98008E7B71 /* Products */,
@@ -151,6 +160,7 @@
 		5E4F135A1401B202008E7B71 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5E4F13831401BEF2008E7B71 /* SVProgressHUD */,
 				5E4F135B1401B20B008E7B71 /* SBJSON */,
 			);
 			name = "External Libraries";
@@ -184,6 +194,16 @@
 				5E4F13721401B217008E7B71 /* SBJsonWriter.m */,
 			);
 			name = SBJSON;
+			sourceTree = "<group>";
+		};
+		5E4F13831401BEF2008E7B71 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5E4F137E1401BEEC008E7B71 /* SVProgressHUD.bundle */,
+				5E4F137F1401BEEC008E7B71 /* SVProgressHUD.h */,
+				5E4F13801401BEEC008E7B71 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +259,7 @@
 				5E4F133E1401AA98008E7B71 /* InfoPlist.strings in Resources */,
 				5E4F13471401AA99008E7B71 /* MainWindow.xib in Resources */,
 				5E4F134D1401AA99008E7B71 /* DetailView.xib in Resources */,
+				5E4F13811401BEEC008E7B71 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +286,7 @@
 				5E4F137B1401B217008E7B71 /* SBJsonTokeniser.m in Sources */,
 				5E4F137C1401B217008E7B71 /* SBJsonUTF8Stream.m in Sources */,
 				5E4F137D1401B217008E7B71 /* SBJsonWriter.m in Sources */,
+				5E4F13821401BEEC008E7B71 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
