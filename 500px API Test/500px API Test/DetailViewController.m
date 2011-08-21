@@ -26,19 +26,45 @@
 
 #pragma mark - Managing the detail item
 
-- (void)configureView
+- (void)configureViewForSelectedRootRow:(int)selectedRow
 {
     [SVProgressHUD showInView:self.view];
     
     __block DetailViewController *blockSelf = self;    //to avoid reference loops
-    // Update the user interface for the detail item.
-    [APIHelper fetchPopularPhotosWithCallback:^(NSArray *fetchedArray) {
+    
+    CallbackBlock callbackBlock = ^(NSArray *fetchedArray) {
         [SVProgressHUD dismiss];
         blockSelf.photos = fetchedArray;
         [blockSelf.photosTablView reloadData];
-    } andErrorBlock:^(NSError *error) {
+    };
+    ErrorBlock errorBlock = ^(NSError *error) {
         NSLog(@"Something horrible happened! %@", error);
-    }];
+    };
+    
+    // Update the user interface for the detail item.
+    
+    switch (selectedRow) {
+        case kPopularRow:
+            [APIHelper fetchPopularPhotosWithCallback:callbackBlock andErrorBlock:errorBlock];
+            break;
+        case kUpcomingRow:
+            [APIHelper fetchUpcomingPhotosWithCallback:callbackBlock andErrorBlock:errorBlock];
+            break;
+        case kEditorsRow:
+            [APIHelper fetchEditorsChoicePhotosWithCallback:callbackBlock andErrorBlock:errorBlock];
+            break;
+        case kFreshTodayRow:
+            [APIHelper fetchFreshTodayPhotosWithCallback:callbackBlock andErrorBlock:errorBlock];
+            break;
+        case kFreshYesterdayRow:
+            [APIHelper fetchFreshYesterdayPhotosWithCallback:callbackBlock andErrorBlock:errorBlock];
+            break;
+        case kFreshThisWeekRow:
+            [APIHelper fetchFreshThisWeekPhotosWithCallback:callbackBlock andErrorBlock:errorBlock];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
