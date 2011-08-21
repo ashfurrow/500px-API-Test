@@ -9,6 +9,7 @@
 #import "APIHelper.h"
 #import "APIConstants.h"
 #import "NSObject+SBJson.h"
+#import "PhotoModel.h"
 
 #define kAPIURLStub @"https://api.500px.com/v1/"
 
@@ -65,13 +66,18 @@
             NSLog(@"Fetching from API returned non-200 response code: %d", [response statusCode]);
         }
         
+        NSLog(@"Parsing API response ...");
+        
         NSString *fetchedDataString = [[[NSString alloc] initWithData:fetchedData encoding:NSUTF8StringEncoding] autorelease];
         NSArray *fetchedArray = [[fetchedDataString JSONValue] valueForKey:@"photos"];
+        NSMutableArray *parsedArray = [NSMutableArray arrayWithCapacity:[fetchedArray count]];
         
-        NSLog(@"Received the following response:%@", fetchedArray);
+        [fetchedArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [parsedArray insertObject:[[[PhotoModel alloc] initWithFetchedDictionary:obj] autorelease] atIndex:idx];
+        }];
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
-            callbackBlock(fetchedArray);
+            callbackBlock([NSArray arrayWithArray:parsedArray]);
         });
         
     });

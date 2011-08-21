@@ -10,6 +10,7 @@
 
 #import "RootViewController.h"
 #import "APIHelper.h"
+#import "PhotoModel.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -146,7 +147,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [[self.photos objectAtIndex:indexPath.row] valueForKey:@"name"];
+    cell.textLabel.text = [[self.photos objectAtIndex:indexPath.row] name];
     
     return cell;
 }
