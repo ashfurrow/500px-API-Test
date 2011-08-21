@@ -25,12 +25,6 @@
     self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
     
-    [APIHelper fetchPopularPhotosWithCallback:^(NSArray *fetchedArray) {
-        NSLog(@"Got this array: %@", fetchedArray);
-    } andErrorBlock:^(NSError *error) {
-        NSLog(@"Got this error: %@", error);
-    }];
-    
     return YES;
 }
 
