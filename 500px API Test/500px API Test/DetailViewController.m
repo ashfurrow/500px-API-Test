@@ -9,44 +9,36 @@
 #import "DetailViewController.h"
 
 #import "RootViewController.h"
+#import "APIHelper.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
-- (void)configureView;
+
 @end
 
 @implementation DetailViewController
 
 @synthesize toolbar = _toolbar;
-@synthesize detailItem = _detailItem;
 @synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize photosTablView = _photosTablView;
 @synthesize popoverController = _myPopoverController;
+@synthesize photos = _photos;
 
 #pragma mark - Managing the detail item
 
-/*
- When setting the detail item, update the view and dismiss the popover controller if it's showing.
- */
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        [_detailItem release];
-        _detailItem = [newDetailItem retain];
-        
-        // Update the view.
-        [self configureView];
-    }
-
-    if (self.popoverController != nil) {
-        [self.popoverController dismissPopoverAnimated:YES];
-    }        
-}
-
 - (void)configureView
 {
+    [SVProgressHUD showInView:self.view];
+    
+    __block DetailViewController *blockSelf = self;    //to avoid reference loops
     // Update the user interface for the detail item.
-
-    self.detailDescriptionLabel.text = [self.detailItem description];
+    [APIHelper fetchPopularPhotosWithCallback:^(NSArray *fetchedArray) {
+        [SVProgressHUD dismiss];
+        blockSelf.photos = fetchedArray;
+        [blockSelf.photosTablView reloadData];
+    } andErrorBlock:^(NSError *error) {
+        NSLog(@"Something horrible happened! %@", error);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,7 +69,7 @@
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController: (UIPopoverController *)pc
 {
-    barButtonItem.title = @"Events";
+    barButtonItem.title = @"Photos";
     NSMutableArray *items = [[self.toolbar items] mutableCopy];
     [items insertObject:barButtonItem atIndex:0];
     [self.toolbar setItems:items animated:YES];
@@ -112,6 +104,27 @@
 	self.popoverController = nil;
 }
 
+#pragma mark  - UITableView Delegate/Datasource Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.photos count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"PhotoCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    cell.textLabel.text = [[self.photos objectAtIndex:indexPath.row] valueForKey:@"name"];
+    
+    return cell;
+}
+
 #pragma mark - Memory management
 
 - (void)didReceiveMemoryWarning
@@ -124,10 +137,11 @@
 
 - (void)dealloc
 {
-    [_myPopoverController release];
-    [_toolbar release];
-    [_detailItem release];
-    [_detailDescriptionLabel release];
+    [_photos release], _photos = nil;
+    [_photosTablView release], _photosTablView = nil;
+    [_myPopoverController release], _myPopoverController = nil;;
+    [_toolbar release], _toolbar = nil;
+    [_detailDescriptionLabel release], _detailDescriptionLabel = nil;
     [super dealloc];
 }
 
