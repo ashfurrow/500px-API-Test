@@ -13,6 +13,11 @@ typedef void (^ErrorBlock)(NSError *error);
 
 @interface APIHelper : NSObject
 
-+ (void) fetchPopularPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorblock;
++ (void) fetchPopularPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
++ (void) fetchUpcomingPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
++ (void) fetchEditorsChoicePhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
++ (void) fetchFreshTodayPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
++ (void) fetchFreshYesterdayPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
++ (void) fetchFreshThisWeekPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
 
 @end

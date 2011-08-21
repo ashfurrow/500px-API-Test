@@ -17,12 +17,13 @@
 +(NSString *) signURL:(NSString *)unsignedURL;
 +(dispatch_queue_t) backgroundQueue;
 
++(void)fetchPhotosInBackgroundWithFeature:(NSString *)feature andCallbackBlock:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock;
+
 @end
 
 @implementation APIHelper
 
 #pragma mark - Private Methods
-
 +(dispatch_queue_t) backgroundQueue
 {
     static dispatch_queue_t queue = NULL;
@@ -38,12 +39,10 @@
     return [NSString stringWithFormat:@"%@&consumer_key=%@", unsignedURL, kAPIConsumerKey];
 }
 
-#pragma mark - Public Methods
-
-+ (void) fetchPopularPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorblock
++(void)fetchPhotosInBackgroundWithFeature:(NSString *)feature andCallbackBlock:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
 {
     dispatch_async([APIHelper backgroundQueue], ^{
-        NSURL *url = [NSURL URLWithString:[APIHelper signURL:[NSString stringWithFormat:@"%@photos?feature=editors", kAPIURLStub]]];
+        NSURL *url = [NSURL URLWithString:[APIHelper signURL:[NSString stringWithFormat:@"%@photos?feature=%@", kAPIURLStub, feature]]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         [request setHTTPMethod:@"GET"];
         
@@ -54,10 +53,10 @@
         if (error)
         {
             NSLog(@"Something went wrong fetching from API: %@", error);
-            if (errorblock != NULL)
+            if (errorBlock != NULL)
             {
                 dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    errorblock(error);
+                    errorBlock(error);
                 });
             }
         }
@@ -74,8 +73,40 @@
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             callbackBlock(fetchedArray);
         });
-
+        
     });
+}
+
+#pragma mark - Public Methods
+
++ (void) fetchPopularPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
+{
+    [APIHelper fetchPhotosInBackgroundWithFeature:@"popular" andCallbackBlock:callbackBlock andErrorBlock:errorBlock];
+}
+
++ (void) fetchUpcomingPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
+{
+    [APIHelper fetchPhotosInBackgroundWithFeature:@"upcoming" andCallbackBlock:callbackBlock andErrorBlock:errorBlock];
+}
+
++ (void) fetchEditorsChoicePhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
+{
+    [APIHelper fetchPhotosInBackgroundWithFeature:@"editors" andCallbackBlock:callbackBlock andErrorBlock:errorBlock];
+}
+
++ (void) fetchFreshTodayPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
+{
+    [APIHelper fetchPhotosInBackgroundWithFeature:@"fresh_today" andCallbackBlock:callbackBlock andErrorBlock:errorBlock];
+}
+
++ (void) fetchFreshYesterdayPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
+{
+    [APIHelper fetchPhotosInBackgroundWithFeature:@"fresh_yesterday" andCallbackBlock:callbackBlock andErrorBlock:errorBlock];
+}
+
++ (void) fetchFreshThisWeekPhotosWithCallback:(CallbackBlock)callbackBlock andErrorBlock:(ErrorBlock)errorBlock
+{
+    [APIHelper fetchPhotosInBackgroundWithFeature:@"fresh_week" andCallbackBlock:callbackBlock andErrorBlock:errorBlock];
 }
 
 @end
