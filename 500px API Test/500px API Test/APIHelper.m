@@ -7,6 +7,8 @@
 //
 
 #import "APIHelper.h"
+#import "APIConstants.h"
+#import "NSObject+SBJson.h"
 
 #define kAPIURLStub @"https://api.500px.com/v1/"
 
@@ -49,9 +51,12 @@
         NSLog(@"Fetching from API returned non-200 response code: %d", [response statusCode]);
     }
     
-    NSLog(@"Received the following response: \n%@Data:\n%@", response, fetchedData);
+    NSString *fetchedDataString = [[[NSString alloc] initWithData:fetchedData encoding:NSUTF8StringEncoding] autorelease];
+    NSArray *fetchedArray = [fetchedDataString JSONValue];
     
-    return nil;
+    NSLog(@"Received the following response:%@", fetchedArray);
+    
+    return fetchedArray;
 }
 
 @end
