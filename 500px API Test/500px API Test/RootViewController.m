@@ -126,16 +126,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.detailViewController.detailDescriptionLabel setText:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
-    // Navigation logic may go here -- for example, create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     NSManagedObject *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    [self.detailViewController.detailDescriptionLabel setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
+    [self.detailViewController configureView];
 }
 
 - (void)didReceiveMemoryWarning

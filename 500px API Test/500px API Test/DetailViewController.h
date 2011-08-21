@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UITableView *photosTablView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *detailDescriptionLabel;
+@property (nonatomic, retain) NSArray *photos;
 
-@property (nonatomic, retain) id detailItem;
-
-@property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
+- (void)configureView;
 
 @end
