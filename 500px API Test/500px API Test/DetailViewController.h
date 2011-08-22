@@ -11,6 +11,7 @@
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     dispatch_queue_t backgroundQueue;
+    NSCache *cache;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;

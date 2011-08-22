@@ -69,11 +69,17 @@
     }
 }
 
+#pragma mark - View Lifecycle
+
+-(void)awakeFromNib
+{
+    backgroundQueue = dispatch_queue_create("com.500px.detailviewcontroller.backgroundqueue", NULL);
+    cache = [[NSCache alloc] init];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    backgroundQueue = dispatch_queue_create("com.500px.detailviewcontroller.backgroundqueue", NULL);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -163,7 +169,7 @@
         }
     }
     
-    cell.selectionStyle = UITableViewCellEditingStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     PhotoModel *photo = [self.photos objectAtIndex:indexPath.row];
     
@@ -171,17 +177,24 @@
     cell.createdDateLabel.text = photo.createdDate;
     cell.photographerNameLabel.text = @"Photographer name";
     cell.categoryRatingLabel.text = [NSString stringWithFormat:@"%d, Rating: %@", photo.category, photo.rating];
-    cell.imageView.image = nil;
-    
-    dispatch_async(backgroundQueue, ^(void) {
-        NSURL *url = [NSURL URLWithString:[(PhotoModel *)[self.photos objectAtIndex:indexPath.row] imageURL]];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage *image = [UIImage imageWithData:data];
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [cell.imageView setImage:image];
-            [cell setNeedsLayout];            
+    if ([cache objectForKey:photo.imageURL])
+    {
+        cell.imageView.image = [cache objectForKey:photo.imageURL];
+    }
+    else
+    {
+        cell.imageView.image = [UIImage imageNamed:@"grey"];
+        dispatch_async(backgroundQueue, ^(void) {
+            NSURL *url = [NSURL URLWithString:[(PhotoModel *)[self.photos objectAtIndex:indexPath.row] imageURL]];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *image = [UIImage imageWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                [cache setObject:image forKey:photo.imageURL];
+                [cell.imageView setImage:image];
+                [cell setNeedsLayout];            
+            });
         });
-    });
+    }
     
     return cell;
 }
@@ -209,6 +222,7 @@
 {
     dispatch_release(backgroundQueue);
     [_photos release], _photos = nil;
+    [cache release], cache = nil;
     [_photosTablView release], _photosTablView = nil;
     [_myPopoverController release], _myPopoverController = nil;;
     [_toolbar release], _toolbar = nil;
