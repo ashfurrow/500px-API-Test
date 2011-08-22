@@ -10,11 +10,13 @@
 
 @implementation PhotoModel
 
-@synthesize name, identifier, rating, imageURL, createdDate, category;
+@synthesize name, photographerName, identifier, rating, imageURL, createdDate, category;
 
 -(id) initWithFetchedDictionary:(NSDictionary *)fetchedDictionary
 {
     if (![self init]) return nil;
+    
+    self.photographerName = [fetchedDictionary valueForKeyPath:kPhotoModelPhotographerNameKeyPath];
     
     self.name = [fetchedDictionary valueForKey:kPhotoModelNameKey];
     self.identifier = [[fetchedDictionary valueForKey:kPhotoModelIdentiferKey] intValue];
@@ -28,6 +30,7 @@
 
 -(void)dealloc
 {
+    self.photographerName = nil;
     self.name = nil;
     self.identifier = -1;
     self.rating = nil;

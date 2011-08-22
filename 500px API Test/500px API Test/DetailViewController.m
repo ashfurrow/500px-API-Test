@@ -177,6 +177,8 @@
     cell.createdDateLabel.text = photo.createdDate;
     cell.photographerNameLabel.text = @"Photographer name";
     cell.categoryRatingLabel.text = [NSString stringWithFormat:@"%d, Rating: %@", photo.category, photo.rating];
+    cell.photographerNameLabel.text = photo.photographerName;
+    
     if ([cache objectForKey:photo.imageURL])
     {
         cell.imageView.image = [cache objectForKey:photo.imageURL];

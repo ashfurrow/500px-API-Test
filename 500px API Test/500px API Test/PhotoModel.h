@@ -14,12 +14,14 @@
 #define kPhotoModelRatingKey        @"rating"
 #define kPhotoModelIdentiferKey     @"id"
 #define kPhotoModelCategoryKey      @"category"
+#define kPhotoModelPhotographerNameKeyPath  @"user.fullname"
 
 @interface PhotoModel : NSObject
 
 -(id) initWithFetchedDictionary:(NSDictionary *)fetchedDictionary;
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *photographerName;
 @property (nonatomic, retain) NSString *createdDate;
 @property (nonatomic, retain) NSString *imageURL;
 @property (nonatomic, retain) NSString *rating;
