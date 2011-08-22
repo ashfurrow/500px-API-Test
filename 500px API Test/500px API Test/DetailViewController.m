@@ -163,26 +163,31 @@
         }
     }
     
+    cell.selectionStyle = UITableViewCellEditingStyleNone;
+    
     PhotoModel *photo = [self.photos objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = photo.name;
     cell.createdDateLabel.text = photo.createdDate;
     cell.photographerNameLabel.text = @"Photographer name";
     cell.categoryRatingLabel.text = [NSString stringWithFormat:@"%d, Rating: %@", photo.category, photo.rating];
+    cell.imageView.image = nil;
     
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
     dispatch_async(backgroundQueue, ^(void) {
         NSURL *url = [NSURL URLWithString:[(PhotoModel *)[self.photos objectAtIndex:indexPath.row] imageURL]];
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage *image = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             [cell.imageView setImage:image];
+            [cell setNeedsLayout];            
         });
     });
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
