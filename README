@@ -1,0 +1,4 @@
+500px recently opened their API to the public. I want to try it out.
+
+In APIConstants.h, you'll need to add your own API keys. You can register for
+them at http://developers.500px.com/ .
