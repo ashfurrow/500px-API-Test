@@ -6,8 +6,8 @@
 //  Copyright 2011 Ash Furrow. All rights reserved.
 //
 
-#define kAPIConsumerKey     @"Insert your consumer key here"
-#define kAPIConsumerSecret  @"Insert your consumer secrety here" 
+#define kAPIConsumerKey     @"zEJa8SeeKpcrqQQfHGzDiKuuHRQssAS09ppVl7Kb"
+#define kAPIConsumerSecret  @"VyJcaxeMcEnjDYO9OQLNYsbENNEDZ0pycTn7NTy2" 
 
 #define kRequestTokenURL    @"https://api.500px.com/v1/oauth/request_token"
 #define kAccessTokenURL     @"https://api.500px.com/v1/oauth/access_token"
