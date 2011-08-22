@@ -7,7 +7,7 @@
 //
 
 #define kAPIConsumerKey     @"Insert your consumer key here"
-#define kAPIConsumerSecret  @"Insert your consumer secrety here" 
+#define kAPIConsumerSecret  @"Insert your consumer secret here" 
 
 #define kRequestTokenURL    @"https://api.500px.com/v1/oauth/request_token"
 #define kAccessTokenURL     @"https://api.500px.com/v1/oauth/access_token"
