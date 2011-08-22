@@ -111,7 +111,6 @@
 		5E4F13241401AA98008E7B71 = {
 			isa = PBXGroup;
 			children = (
-				5E4F13881401BFE4008E7B71 /* QuartzCore.framework */,
 				5E4F13391401AA98008E7B71 /* 500px API Test */,
 				5E4F13321401AA98008E7B71 /* Frameworks */,
 				5E4F13301401AA98008E7B71 /* Products */,
@@ -129,6 +128,7 @@
 		5E4F13321401AA98008E7B71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E4F13881401BFE4008E7B71 /* QuartzCore.framework */,
 				5E4F13331401AA98008E7B71 /* UIKit.framework */,
 				5E4F13351401AA98008E7B71 /* Foundation.framework */,
 				5E4F13371401AA98008E7B71 /* CoreGraphics.framework */,
