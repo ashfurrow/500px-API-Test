@@ -29,7 +29,7 @@
 {
     static dispatch_queue_t queue = NULL;
     if (queue == NULL)
-        queue = dispatch_queue_create("com.500px.backgroundqueue", NULL);
+        queue = dispatch_queue_create("com.500px.APIHelper.backgroundqueue", NULL);
     return queue;
 }
 
