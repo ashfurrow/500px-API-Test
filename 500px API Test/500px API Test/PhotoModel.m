@@ -28,6 +28,42 @@
     return self;
 }
 
+/*
+ From http://developers.500px.com/docs/formats#categories
+ */
+-(NSString *)categoryName
+{
+    switch (self.category) {
+        case 10:
+            return @"Abstract";
+        case 11: return @"Animals";
+        case 5: return @"Black and White";
+        case 1: return @"Celebrities";
+        case 9: return @"City and Architecture";
+        case 15: return @"Commerical";
+        case 16: return @"Concert";
+        case 20: return @"Family";
+        case 14: return @"Fashion";
+        case 2: return @"Film";
+        case 24: return @"Fine Arts";
+        case 23: return @"Food";
+        case 3: return @"Journalism";
+        case 8: return @"Landscapes";
+        case 12: return @"Macro";
+        case 18: return @"Nature";
+        case 4: return @"Nude";
+        case 7: return @"People";
+        case 19: return @"Performing Arts";
+        case 17: return @"Sport";
+        case 6: return @"Still Life";
+        case 21: return @"Street";
+        case 13: return @"Travel";
+        case 22: return @"Underwater";
+        default:
+            return @"Uncategorized";
+    }
+}
+
 -(void)dealloc
 {
     self.photographerName = nil;

@@ -30,7 +30,7 @@
 
 - (void)configureViewForSelectedRootRow:(int)selectedRow
 {
-    [SVProgressHUD showInView:self.view];
+    [SVProgressHUD showInView:self.view status:@"Loading" networkIndicator:YES];
     
     __block DetailViewController *blockSelf = self;    //to avoid reference loops
     
@@ -176,7 +176,7 @@
     cell.nameLabel.text = photo.name;
     cell.createdDateLabel.text = photo.createdDate;
     cell.photographerNameLabel.text = @"Photographer name";
-    cell.categoryRatingLabel.text = [NSString stringWithFormat:@"%d, Rating: %@", photo.category, photo.rating];
+    cell.categoryRatingLabel.text = [NSString stringWithFormat:@"%@, Rating: %@", photo.categoryName, photo.rating];
     cell.photographerNameLabel.text = photo.photographerName;
     
     if ([cache objectForKey:photo.imageURL])

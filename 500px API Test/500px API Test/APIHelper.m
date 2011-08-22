@@ -49,6 +49,7 @@
         
         NSHTTPURLResponse *response;
         NSError *error = nil;
+        NSLog(@"Fetching from API");
         NSData *fetchedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
         if (error)
@@ -75,6 +76,8 @@
         [fetchedArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [parsedArray insertObject:[[[PhotoModel alloc] initWithFetchedDictionary:obj] autorelease] atIndex:idx];
         }];
+        
+        NSLog(@"Parsing complete. Dispatching callback.");
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             callbackBlock([NSArray arrayWithArray:parsedArray]);
