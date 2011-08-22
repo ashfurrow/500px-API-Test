@@ -11,6 +11,7 @@
 #import "RootViewController.h"
 #import "APIHelper.h"
 #import "PhotoModel.h"
+#import "PhotoTableViewCell.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -66,6 +67,13 @@
         default:
             break;
     }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    backgroundQueue = dispatch_queue_create("com.500px.detailviewcontroller.backgroundqueue", NULL);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -142,14 +150,44 @@
 {
     static NSString *CellIdentifier = @"PhotoCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PhotoTableViewCell *cell = (PhotoTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PhotoTableViewCell" owner:nil options:nil];
+        for (id obj in topLevelObjects)
+        {
+            if ([obj class] == [PhotoTableViewCell class])
+            {
+                cell = obj;
+                break;
+            }
+        }
     }
     
-    cell.textLabel.text = [[self.photos objectAtIndex:indexPath.row] name];
+    PhotoModel *photo = [self.photos objectAtIndex:indexPath.row];
+    
+    cell.nameLabel.text = photo.name;
+    cell.createdDateLabel.text = photo.createdDate;
+    cell.photographerNameLabel.text = @"Photographer name";
+    cell.categoryRatingLabel.text = [NSString stringWithFormat:@"%d, Rating: %@", photo.category, photo.rating];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    dispatch_async(backgroundQueue, ^(void) {
+        NSURL *url = [NSURL URLWithString:[(PhotoModel *)[self.photos objectAtIndex:indexPath.row] imageURL]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [cell.imageView setImage:image];
+        });
+    });
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 140.0f;
 }
 
 #pragma mark - Memory management
@@ -164,6 +202,7 @@
 
 - (void)dealloc
 {
+    dispatch_release(backgroundQueue);
     [_photos release], _photos = nil;
     [_photosTablView release], _photosTablView = nil;
     [_myPopoverController release], _myPopoverController = nil;;

@@ -33,6 +33,9 @@
 		5E4F13821401BEEC008E7B71 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13801401BEEC008E7B71 /* SVProgressHUD.m */; };
 		5E4F13891401BFE4008E7B71 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4F13881401BFE4008E7B71 /* QuartzCore.framework */; };
 		5E4F13BB1401CAD6008E7B71 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13BA1401CAD6008E7B71 /* PhotoModel.m */; };
+		5E4F13BD1401CEA3008E7B71 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E4F13BC1401CEA3008E7B71 /* PhotoTableViewCell.xib */; };
+		5E4F13C01401CEB6008E7B71 /* PhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F13BF1401CEB6008E7B71 /* PhotoTableViewCell.m */; };
+		5E4F13C21401D274008E7B71 /* grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E4F13C11401D273008E7B71 /* grey.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,10 @@
 		5E4F13881401BFE4008E7B71 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E4F13B91401CAD6008E7B71 /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
 		5E4F13BA1401CAD6008E7B71 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
+		5E4F13BC1401CEA3008E7B71 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		5E4F13BE1401CEB5008E7B71 /* PhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTableViewCell.h; sourceTree = "<group>"; };
+		5E4F13BF1401CEB6008E7B71 /* PhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewCell.m; sourceTree = "<group>"; };
+		5E4F13C11401D273008E7B71 /* grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +153,10 @@
 				5E4F13571401AC53008E7B71 /* APIHelper.m */,
 				5E4F13B91401CAD6008E7B71 /* PhotoModel.h */,
 				5E4F13BA1401CAD6008E7B71 /* PhotoModel.m */,
+				5E4F13BC1401CEA3008E7B71 /* PhotoTableViewCell.xib */,
+				5E4F13BE1401CEB5008E7B71 /* PhotoTableViewCell.h */,
+				5E4F13BF1401CEB6008E7B71 /* PhotoTableViewCell.m */,
+				5E4F13C11401D273008E7B71 /* grey.png */,
 			);
 			path = "500px API Test";
 			sourceTree = "<group>";
@@ -265,6 +276,8 @@
 				5E4F13471401AA99008E7B71 /* MainWindow.xib in Resources */,
 				5E4F134D1401AA99008E7B71 /* DetailView.xib in Resources */,
 				5E4F13811401BEEC008E7B71 /* SVProgressHUD.bundle in Resources */,
+				5E4F13BD1401CEA3008E7B71 /* PhotoTableViewCell.xib in Resources */,
+				5E4F13C21401D274008E7B71 /* grey.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +306,7 @@
 				5E4F137D1401B217008E7B71 /* SBJsonWriter.m in Sources */,
 				5E4F13821401BEEC008E7B71 /* SVProgressHUD.m in Sources */,
 				5E4F13BB1401CAD6008E7B71 /* PhotoModel.m in Sources */,
+				5E4F13C01401CEB6008E7B71 /* PhotoTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

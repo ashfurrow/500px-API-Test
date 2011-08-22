@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+{
+    dispatch_queue_t backgroundQueue;
+}
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, retain) IBOutlet UITableView *photosTablView;
