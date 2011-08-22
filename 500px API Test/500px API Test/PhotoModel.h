@@ -19,6 +19,7 @@
 @interface PhotoModel : NSObject
 
 -(id) initWithFetchedDictionary:(NSDictionary *)fetchedDictionary;
+-(NSString *)categoryName;
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *photographerName;
