@@ -140,22 +140,14 @@
 			isa = PBXGroup;
 			children = (
 				5E4F135A1401B202008E7B71 /* External Libraries */,
+				5E4F13C51401E0A8008E7B71 /* Models */,
+				5E4F13C31401E098008E7B71 /* Views */,
+				5E4F13C41401E0A0008E7B71 /* Controllers */,
+				5E4F133A1401AA98008E7B71 /* Supporting Files */,
 				5E4F13421401AA98008E7B71 /* _00px_API_TestAppDelegate.h */,
 				5E4F13431401AA98008E7B71 /* _00px_API_TestAppDelegate.m */,
-				5E4F13451401AA99008E7B71 /* MainWindow.xib */,
-				5E4F13481401AA99008E7B71 /* DetailViewController.h */,
-				5E4F13491401AA99008E7B71 /* DetailViewController.m */,
-				5E4F134B1401AA99008E7B71 /* DetailView.xib */,
-				5E4F134E1401AA99008E7B71 /* RootViewController.h */,
-				5E4F134F1401AA99008E7B71 /* RootViewController.m */,
-				5E4F133A1401AA98008E7B71 /* Supporting Files */,
 				5E4F13561401AC53008E7B71 /* APIHelper.h */,
 				5E4F13571401AC53008E7B71 /* APIHelper.m */,
-				5E4F13B91401CAD6008E7B71 /* PhotoModel.h */,
-				5E4F13BA1401CAD6008E7B71 /* PhotoModel.m */,
-				5E4F13BC1401CEA3008E7B71 /* PhotoTableViewCell.xib */,
-				5E4F13BE1401CEB5008E7B71 /* PhotoTableViewCell.h */,
-				5E4F13BF1401CEB6008E7B71 /* PhotoTableViewCell.m */,
 				5E4F13C11401D273008E7B71 /* grey.png */,
 			);
 			path = "500px API Test";
@@ -220,6 +212,38 @@
 				5E4F13801401BEEC008E7B71 /* SVProgressHUD.m */,
 			);
 			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		5E4F13C31401E098008E7B71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E4F13451401AA99008E7B71 /* MainWindow.xib */,
+				5E4F134B1401AA99008E7B71 /* DetailView.xib */,
+				5E4F13BC1401CEA3008E7B71 /* PhotoTableViewCell.xib */,
+				5E4F13BE1401CEB5008E7B71 /* PhotoTableViewCell.h */,
+				5E4F13BF1401CEB6008E7B71 /* PhotoTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5E4F13C41401E0A0008E7B71 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E4F13481401AA99008E7B71 /* DetailViewController.h */,
+				5E4F13491401AA99008E7B71 /* DetailViewController.m */,
+				5E4F134E1401AA99008E7B71 /* RootViewController.h */,
+				5E4F134F1401AA99008E7B71 /* RootViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5E4F13C51401E0A8008E7B71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E4F13B91401CAD6008E7B71 /* PhotoModel.h */,
+				5E4F13BA1401CAD6008E7B71 /* PhotoModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
